@@ -1,16 +1,19 @@
-class Beer
-  attr_accessor :name, :size
-  def initialize(name, size)
-    @name = name
-    @size = size
+class Anagram
+  attr_accessor :word
+  def initialize(word)
+    @word = word
   end
-
-  # instance method!
-  def drink_a_beer(beer)
-    puts "mMmmMMm this #{beer} is good, but not as good as #{@name}"
-  end 
+            
+  def match(possible)
+    possible = [] 
+    possible.map do |a|
+      if a.split("").sort == @word.split("").sort
+        possible << a                                          
+      end
+    end
+    possible
+  end
 end
 
-beer1 = Beer.new("pbr", 84)
-
-beer1.drink_a_beer("pbr")
+test = Anagram.new("hello")
+match(["ade", "ellho"])
